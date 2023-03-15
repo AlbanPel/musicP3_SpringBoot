@@ -5,12 +5,12 @@ import com.example.musicp3_springboot.form.CreateMusicForm;
 import com.example.musicp3_springboot.repository.MusicRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class MusicController {
@@ -27,6 +27,13 @@ public class MusicController {
         return musics;
     }
 
+    @GetMapping("/view-music/"+"{id}")
+    public  String displayVue(@PathVariable("id") long number, Model model, RedirectAttributes redirectAttributes) {
+        Music music = musicRepository.getId(number);
+        model.addAttribute("music", music);
+        return "view-music";
+    }
+
     @GetMapping("/create-music")
     public String displayAdd(@ModelAttribute CreateMusicForm createMusicForm) {
         return "create-music";
@@ -39,9 +46,10 @@ public class MusicController {
         music.setTitle(createMusicForm.getTitle());
         music.setDescription(createMusicForm.getDescription());
         musicRepository.add(music);
-        return null;
+        return "successForm";
 
     }
+
 
 
 

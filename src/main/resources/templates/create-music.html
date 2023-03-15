@@ -9,7 +9,7 @@
 <body>
 <div class="container">
     <h1>Ajouter une musique</h1>
-    <form th:action="@{/list}" method="POST" th:object="${createMusicForm}">
+    <form th:action="@{/createMusic}" method="POST" th:object="${createMusicForm}">
         <div class="mb-3">
             <label for="exampleInputTitle" class="form-label">Titre de musique</label>
             <input type="text" th:field="*{title}" class="form-control" id="exampleInputTitle">

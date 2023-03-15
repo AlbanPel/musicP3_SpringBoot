@@ -4,11 +4,11 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 
 public class Music {
-    @Column("TITLE")
-    private String title;
     @Id
     @Column("MUSIC_ID")
     private String music_id;
+    @Column("TITLE")
+    private String title;
 
     @Column("DESCRIPTION")
     private String description;
