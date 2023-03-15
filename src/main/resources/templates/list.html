@@ -9,7 +9,7 @@
 <body>
 <div class="container">
     <h1>Liste de mes musiques</h1>
-    <a href="add" type="button" class="btn btn-primary">Ajouter une music</a>
+    <a href="create-music" type="button" class="btn btn-primary">Ajouter une music</a>
     <table>
         <tr th:each="music: ${musics}">
             <td th:text="${music.title}"></td>

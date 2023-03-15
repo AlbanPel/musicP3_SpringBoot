@@ -9,14 +9,14 @@
 <body>
 <div class="container">
     <h1>Ajouter une musique</h1>
-    <form th:action="@/createMusic" method="POST" th:objet="${createMusicForm}">
+    <form th:action="@{/list}" method="POST" th:object="${createMusicForm}">
         <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Titre de musique</label>
-            <input type="text" th:field="*{title}" class="form-control" id="exampleInputEmail1">
+            <label for="exampleInputTitle" class="form-label">Titre de musique</label>
+            <input type="text" th:field="*{title}" class="form-control" id="exampleInputTitle">
         </div>
         <div class="mb-3">
-            <label for="exampleInputDescription1" class="form-label">Description</label>
-            <textarea type="text" th:field="*{description} "class="form-control" id="exampleInputDescription1" rows="4"></textarea>
+            <label for="exampleInputDescription" class="form-label">Description</label>
+            <textarea type="text" th:field="*{description} "class="form-control" id="exampleInputDescription" rows="4"></textarea>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>

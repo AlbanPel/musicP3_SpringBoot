@@ -12,5 +12,9 @@ public class MusicService {
 
     public Iterable<Music> getMusicList() {return musicRepositoryInterface.findAll(); }
 
+    //add
+    //public Music add(Music music) {return musicRepositoryInterface.save(music);}
+
+
 
 }

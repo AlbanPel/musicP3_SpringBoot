@@ -5,6 +5,7 @@ import com.example.musicp3_springboot.form.CreateMusicForm;
 import com.example.musicp3_springboot.repository.MusicRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,17 +27,18 @@ public class MusicController {
         return musics;
     }
 
-    @RequestMapping("/add")
-    public String displayAdd() {
+    @GetMapping("/create-music")
+    public String displayAdd(@ModelAttribute CreateMusicForm createMusicForm) {
         return "create-music";
     }
 
     @PostMapping("/createMusic")
     public String createMusic(@ModelAttribute CreateMusicForm createMusicForm) {
+        System.out.println("je suis dans le postMapping");
         Music music = new Music();
         music.setTitle(createMusicForm.getTitle());
         music.setDescription(createMusicForm.getDescription());
-
+        musicRepository.add(music);
         return null;
 
     }

@@ -19,4 +19,13 @@ public class MusicRepository {
                         rs.getString("DESCRIPTION")
                 ));
     }
+
+    //add
+    public int add (Music music) {
+        return jdbcTemplate.update("INSERT INTO MUSIC ( title, description) VALUES(?,?)",
+                new Object[]{
+                     music.getTitle(), music.getDescription()
+                });
+
+        };
 }
