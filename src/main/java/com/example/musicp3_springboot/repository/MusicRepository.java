@@ -37,5 +37,17 @@ public class MusicRepository {
                 ));
     }
 
+    public void update(Music music) {
+        String query = "UPDATE MUSIC SET TITLE = ?, DESCRIPTION = ? WHERE MUSIC_ID = ?";
+        jdbcTemplate.update(query, new Object[]{
+                music.getTitle(),
+                music.getDescription(),
+                music.getMusic_id()
+        });
+    }
+    public void deleteById(Long id) {
+        jdbcTemplate.update("DELETE FROM MUSIC WHERE MUSIC_ID = ?", id);
+    }
+
 
 }

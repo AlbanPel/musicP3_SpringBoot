@@ -50,6 +50,36 @@ public class MusicController {
 
     }
 
+    @GetMapping("/edit-music/{id}")
+    public String displayUpdateMusicForm(@PathVariable("id") long number, Model model) {
+
+        Music music = musicRepository.getId(number);
+        System.out.println("music object: " + music);
+        CreateMusicForm createMusicForm = new CreateMusicForm(); // initialiser l'objet CreateMusicForm
+
+        createMusicForm.setTitle(music.getTitle());
+        createMusicForm.setDescription(music.getDescription());
+        model.addAttribute("createMusicForm", music);
+        return "edit-music";
+    }
+
+
+    @PostMapping("/updateMusic/{id}")
+    public String updateMusic(@PathVariable("id") long number, @ModelAttribute CreateMusicForm createMusicForm) {
+
+        Music music = musicRepository.getId(number);
+
+        music.setTitle(createMusicForm.getTitle());
+        music.setDescription(createMusicForm.getDescription());
+        musicRepository.update(music);
+        return "successFormEdit";
+    }
+    @PostMapping("/deleteMusic/{id}")
+    public String deleteMusic(@PathVariable Long id) {
+        musicRepository.deleteById(id);
+        return "successDeleteForm";
+    }
+
 
 
 
